@@ -22,7 +22,3 @@ provider "helm" {
     config_path = "~/.kube/config"
   }
 }
-
-module "infra" {
-    source = "./module-infra"
-}
