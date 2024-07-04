@@ -75,7 +75,7 @@ variable "update_bashrc" {
 }
 
 variable "ssh_private_key_path" {
-  description = "Path to the SSH private key file for accessing the droplet."
+  description = "The directory to save the SSH key pair."
   type        = string
 }
 
