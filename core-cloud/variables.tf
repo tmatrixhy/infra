@@ -3,12 +3,6 @@ variable "digitalocean_token" {
   type        = string
 }
 
-variable "droplet_ssh_keys" {
-  description = "A list of SSH key fingerprints to add to the droplet."
-  type        = list(string)
-  default     = []
-}
-
 variable "droplet_name" {
   description = "Name of the droplet -- No Spaces"
   type        = string
@@ -68,10 +62,9 @@ variable "static_domain" {
   default     = "example.com"
 }
 
-variable "update_bashrc" {
-  description = "Whether to update the ~/.bashrc file with the new alias."
-  type        = bool
-  default     = false
+variable "alias_for_droplet_ssh" {
+  description = "Update the ~/.bashrc file with an alias to SSH to droplet"
+  type        = string
 }
 
 variable "ssh_private_key_path" {
@@ -82,4 +75,10 @@ variable "ssh_private_key_path" {
 variable "bootstrap_script" {
   description = "The script to bootstrap the droplet instance"
   type        = string
+}
+
+variable "additional_droplet_ssh_keys" {
+  description = "A list of additional SSH key fingerprints to add to the droplet."
+  type        = list(string)
+  default     = []
 }

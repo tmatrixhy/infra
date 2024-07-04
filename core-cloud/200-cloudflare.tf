@@ -1,9 +1,9 @@
-resource "random_id" "dns_name" {
+resource "random_id" "key" {
   byte_length = 8
 }
 
 locals {
-  subdomain_name   = var.cloudflare_subdomain != "" ? var.cloudflare_subdomain : random_id.dns_name.hex
+  subdomain_name   = var.cloudflare_subdomain != "" ? var.cloudflare_subdomain : random_id.key.hex
   full_domain_name = "${local.subdomain_name}.${var.static_domain}"
 }
 
