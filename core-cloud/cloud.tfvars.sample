@@ -8,6 +8,7 @@ droplet_size                = "s-1vcpu-2gb-amd" # ~ $14 / month
 droplet_region              = "nyc"
 droplet_ssh_keys            = [ "your_ssh_key_fingerprint_here",
                                 "de:ad:be:ef:de:ad:be:ef:de:ad:be:ef:de:ad:be:ef"]
+
 update_bashrc               = true
 ssh_private_key_path        = "" # path to root cert for droplet EG: ~/.ssh/id_rsa
 bootstrap_script            = "./remote-droplet-setup.sh"

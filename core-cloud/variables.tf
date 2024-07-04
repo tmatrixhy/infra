@@ -83,3 +83,4 @@ variable "bootstrap_script" {
   description = "The script to bootstrap the droplet instance"
   type        = string
 }
+
