@@ -67,3 +67,19 @@ variable "static_domain" {
   type        = string
   default     = "example.com"
 }
+
+variable "update_bashrc" {
+  description = "Whether to update the ~/.bashrc file with the new alias."
+  type        = bool
+  default     = false
+}
+
+variable "ssh_private_key_path" {
+  description = "Path to the SSH private key file for accessing the droplet."
+  type        = string
+}
+
+variable "bootstrap_script" {
+  description = "The script to bootstrap the droplet instance"
+  type        = string
+}
