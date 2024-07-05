@@ -19,6 +19,7 @@ This folder provides IaC (Infra-as-Code) to
 
 **Properly read and configure your variables file. A sample is provided in `./core-cloud/cloud.tfvars.sample`**
 
+
 ### Requirements: 
 
 * [Terraform](https://developer.hashicorp.com/terraform/tutorials/aws-get-started/install-cli)
