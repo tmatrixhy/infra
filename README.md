@@ -24,7 +24,7 @@ This folder provides IaC (Infra-as-Code) to
 ### Requirements: 
 
 * [Terraform](https://developer.hashicorp.com/terraform/tutorials/aws-get-started/install-cli)
-* [Hashicorp Secrets Vault](https://www.hashicorp.com/products/vault)
+* [Hashicorp Vault Secrets](https://www.hashicorp.com/products/vault)
 * [Digital Ocean Account](https://m.do.co/c/05f6cbbc106b)
 * [Cloudflare](https://www.cloudflare.com/) managed DNS record
 
