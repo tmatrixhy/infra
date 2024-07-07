@@ -9,7 +9,7 @@ locals {
 
 resource "cloudflare_record" "primarydomain" {
   depends_on = [ digitalocean_droplet.primary_server ]
-  zone_id = var.cloudflare_zone_id
+  zone_id = data.hcp_vault_secrets_secret.cloudflare_zone_id.secret_value
   name    = local.subdomain_name
   value   = digitalocean_droplet.primary_server.ipv4_address
   type    = "A"
