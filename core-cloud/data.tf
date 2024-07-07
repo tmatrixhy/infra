@@ -12,3 +12,8 @@ data "hcp_vault_secrets_secret" "cloudflare_zone_id" {
   app_name    = var.HCP_APP_NAME
   secret_name = "cloudflare_zone_id"
 }
+
+data "hcp_vault_secrets_secret" "tailscale" {
+  app_name    = var.HCP_APP_NAME
+  secret_name = "tailscale_api_key"
+}

@@ -25,7 +25,8 @@ resource "digitalocean_droplet" "primary_server" {
 }
 
 resource "null_resource" "run_remote_commands" {
-  depends_on = [ digitalocean_droplet.primary_server ]
+  depends_on = [ digitalocean_droplet.primary_server, 
+                tailscale_tailnet_key.primary_server ]
   count = var.ssh_private_key_path != "" ? 1 : 0
 
   connection {
@@ -42,6 +43,8 @@ resource "null_resource" "run_remote_commands" {
 
   provisioner "remote-exec" {
     inline = [
+      "curl -fsSL https://tailscale.com/install.sh | sh",
+      "tailscale up --authkey=${tailscale_tailnet_key.primary_server.key}",
       "chmod +x /tmp/bootstrap.sh",
       "for i in {1..3}; do /tmp/bootstrap.sh && break || sleep 15; done"
     ]
