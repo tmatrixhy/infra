@@ -7,6 +7,7 @@ This repository contains various infrastructure "<span style="color:red">experim
     - [Requirements:](#requirements)
     - [Installation / Usage:](#installation--usage)
     - [Uninstall / Delete:](#uninstall--delete)
+  - [WSL \& Tailscale](#wsl--tailscale)
 
 
 ## `./core-cloud`
@@ -47,3 +48,33 @@ source <your-.env-file> && terraform apply --var-file=<your-private-var-file> &&
 cd ./core-cloud
 source <your-.env-file> && terraform destroy --var-file=<your-private-var-file>
 ```
+
+## WSL & Tailscale
+
+Tailscale seems to affect WSL if installed locally and DNS resolution fails to work. To resolve this:
+
+From WSL:
+
+```
+sudo nano /etc/wsl.conf
+
+# Ensure this line does not exist:
+[network]
+generateResolvConf = true (or false)
+# Save and Exit
+
+sudo rm /etc/resolv.conf
+sudo nano /etc/resolv.conf
+# add the following line
+nameserver 8.8.8.8
+# save the file and exit the editor
+exit
+```
+
+From Powershell:
+
+```
+wsl --shutdown
+```
+
+Restart WSL and you should be all set.

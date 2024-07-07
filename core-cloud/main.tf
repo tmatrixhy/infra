@@ -21,6 +21,10 @@ terraform {
           source  = "hashicorp/hcp"
           version = "~> 0.94.0"
         }
+        tailscale = {
+          source = "tailscale/tailscale"
+          version = "0.16.1"
+        }
     }
     required_version = ">= 1.0"
 }
@@ -41,6 +45,10 @@ provider "digitalocean" {
 
 provider "cloudflare" {
   api_token = data.hcp_vault_secrets_secret.cloudflare.secret_value
+}
+
+provider "tailscale" {
+  api_key = data.hcp_vault_secrets_secret.tailscale.secret_value
 }
 
 provider "hcp" {
