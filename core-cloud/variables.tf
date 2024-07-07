@@ -1,6 +1,19 @@
-variable "digitalocean_token" {
-  description = "The token for DigitalOcean API."
+variable "HCP_CLIENT_ID" {
+  description = "HCP Service Principal Client ID"
   type        = string
+  default     = "$HCP_CLIENT_ID"
+}
+
+variable "HCP_CLIENT_SECRET" {
+  description = "HCP Service Principal Client Secret"
+  type        = string
+  default     = "$HCP_CLIENT_SECRET"
+}
+
+variable "HCP_APP_NAME" {
+  description = "HCP Vault Secrets application name"
+  type        = string
+  default     = "$HCP_APP_NAME"
 }
 
 variable "droplet_name" {
@@ -27,21 +40,6 @@ variable "droplet_vpc" {
   description = "VPC ID if you want it"
   type        = string
   default     = ""
-}
-
-variable "cloudflare_email" {
-  description = "The email associated with your Cloudflare account."
-  type        = string
-}
-
-variable "cloudflare_api_token" {
-  description = "The API token for Cloudflare."
-  type        = string
-}
-
-variable "cloudflare_zone_id" {
-  description = "The Zone ID for Cloudflare."
-  type        = string
 }
 
 variable "cloudflare_subdomain" {

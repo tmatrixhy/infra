@@ -39,3 +39,6 @@ terraform.rc
 *.crt
 *.csr
 *.key
+
+# misc
+.env

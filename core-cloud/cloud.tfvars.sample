@@ -1,6 +1,4 @@
 # digital ocean
-digitalocean_token          = ""
-
 # for the following values, from the digitial ocean UI, go to create Droplet -> fill out info and click "create via commandline" to get the values below
 droplet_name                = "main-server"
 droplet_image               = "158807664" # 158807664 Ubuntu docker-20-04
@@ -12,12 +10,6 @@ additional_droplet_ssh_keys = [] # [ "your_ssh_key_fingerprint_here",
                                  #  "de:ad:be:ef:de:ad:be:ef:de:ad:be:ef:de:ad:be:ef"]
 
 # cloudflare
-cloudflare_email            = ""
-cloudflare_api_token        = ""
-
-# zone_id is located on the Cloudflare UI "Overview" -> Bottom Right
-cloudflare_zone_id          = ""
-
 cloudflare_subdomain        = "" # leave empty for a random hash
 cloudflare_domain_proxy     = false
 static_domain               = "example.com"
