@@ -1,0 +1,11 @@
+SHELL := /bin/bash
+
+apply:
+	source <your-env-file>
+	terraform apply --var-file=<your-private-var-file> -auto-approve
+	source ~/.bashrc
+
+destroy:
+	source <your-env-file>
+	terraform destroy --var-file=<your-private-var-file> -auto-approve
+	source ~/.bashrc

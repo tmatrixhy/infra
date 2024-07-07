@@ -28,7 +28,7 @@ This folder provides IaC (Infra-as-Code) to
 * [Terraform](https://developer.hashicorp.com/terraform/tutorials/aws-get-started/install-cli) - IAC
 * [Hashicorp Vault Secrets](https://www.hashicorp.com/products/vault) - Secure Secrets Storage
 * [Tailscale](https://tailscale.com/) - Virtual Private LAN
-* [Digital Ocean Account](https://m.do.co/c/05f6cbbc106b) - Servers
+* [Digital Ocean Account](https://m.do.co/c/05f6cbbc106b) - Cloud Servers
 * [Cloudflare](https://www.cloudflare.com/) - Managed DNS record
 
 ### Installation / Usage:
@@ -46,6 +46,7 @@ This folder provides IaC (Infra-as-Code) to
 cd ./core-cloud
 terraform init
 source <your-.env-file> && terraform apply --var-file=<your-private-var-file> && source ~/.bashrc
+# or configure the Makefile appropriately
 ```
 
 ### Uninstall / Delete:
@@ -53,6 +54,7 @@ source <your-.env-file> && terraform apply --var-file=<your-private-var-file> &&
 ```
 cd ./core-cloud
 source <your-.env-file> && terraform destroy --var-file=<your-private-var-file>
+# or configure the Makefile appropriately
 ```
 
 ### WSL & Tailscale

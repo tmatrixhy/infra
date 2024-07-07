@@ -13,7 +13,7 @@ resource "null_resource" "bootstrap_tailscale" {
 
   provisioner "remote-exec" {
     inline = [
-      "curl -fsSL https://tailscale.com/install.sh | sh",
+      "for i in {1..3}; do curl -fsSL https://tailscale.com/install.sh | sh && break || sleep 15; done",
       "tailscale up --authkey=${tailscale_tailnet_key.primary_server.key}"
     ]
   }
