@@ -3,11 +3,13 @@ digitalocean_token          = ""
 
 # for the following values, from the digitial ocean UI, go to create Droplet -> fill out info and click "create via commandline" to get the values below
 droplet_name                = "main-server"
-droplet_image               = "158062325" # 158062325 Ubuntu docker-20-04
+droplet_image               = "158807664" # 158807664 Ubuntu docker-20-04
 droplet_size                = "s-1vcpu-2gb-amd" # ~ $14 / month
 droplet_region              = "nyc"
-droplet_ssh_keys            = [ "your_ssh_key_fingerprint_here",
-                                "de:ad:be:ef:de:ad:be:ef:de:ad:be:ef:de:ad:be:ef"]
+ssh_private_key_path        = "~/.ssh" # path where SSH key should be saved
+bootstrap_script            = "./droplet-bootstrap.sh" # set to bootstrap the instance
+additional_droplet_ssh_keys = [] # [ "your_ssh_key_fingerprint_here",
+                                 #  "de:ad:be:ef:de:ad:be:ef:de:ad:be:ef:de:ad:be:ef"]
 
 # cloudflare
 cloudflare_email            = ""
@@ -19,3 +21,6 @@ cloudflare_zone_id          = ""
 cloudflare_subdomain        = "" # leave empty for a random hash
 cloudflare_domain_proxy     = false
 static_domain               = "example.com"
+
+# local
+alias_for_droplet_ssh       = "" # set an alias value
