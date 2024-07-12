@@ -1,0 +1,4 @@
+- hosts: main-server
+  tasks:
+    - name: Echo server name and save to a file
+      shell: echo "{{ ansible_host }}" > ~/server_name.txt
