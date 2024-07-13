@@ -1,7 +1,7 @@
 # digital ocean
 # for the following values, from the digitial ocean UI, go to create Droplet -> fill out info and click "create via commandline" to get the values below
 droplet_name                = "main-server"
-droplet_image               = "158807664" # 158807664 Ubuntu docker-20-04
+droplet_image               = "158807664" # 158807664 Ubuntu docker-20-04 from `doctl compute image list`
 droplet_size                = "s-1vcpu-2gb-amd" # ~ $14 / month
 droplet_region              = "nyc"
 ssh_private_key_path        = "~/.ssh" # path where SSH key should be saved

@@ -1,4 +1,8 @@
 resource "digitalocean_ssh_key" "generated_key" {
+  #
+  # add ssh key to digitalocean
+  #
+
   name       = random_id.key.hex
   public_key = file("${var.ssh_private_key_path}/${random_id.key.hex}.pub")
 
@@ -6,6 +10,10 @@ resource "digitalocean_ssh_key" "generated_key" {
 }
 
 resource "digitalocean_droplet" "primary_server" {
+  # 
+  # Create digitalocean droplet based on requirements set in variables
+  # 
+
   depends_on = [ null_resource.delete_ssh_key ]
   name   = var.droplet_name
   size   = var.droplet_size

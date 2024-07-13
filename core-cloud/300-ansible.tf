@@ -1,4 +1,8 @@
 resource "null_resource" "update_ansible_inventory" {
+  #
+  # update ansible hosts
+  # 
+
   provisioner "local-exec" {
     command = <<EOT
       # Ensure the hosts file exists
@@ -22,6 +26,10 @@ EOF
 }
 
 resource "null_resource" "update_ansible_playbook" {
+  # 
+  # update ansible playbook with demo command
+  # 
+
   provisioner "local-exec" {
     command = <<EOT
       # Remove the existing droplet block if it exists
