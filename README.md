@@ -19,6 +19,7 @@ This folder provides IaC (Infra-as-Code) to
 4. <span style="color:green">(optional)</span> Bootstrap's the droplet with `tailscale` for private VPN.
 5. <span style="color:green">(optional)</span> Bootstrap's the droplet with a provided bash script, example in `./droplet-bootstrap.sh`.
 6. <span style="color:green">(optional)</span> Bootstrap's your local `~/.bashrc` with an alias to ssh to the droplet as root using the auto-generated SSH key in `1`.
+7. Setup the `../ansible/hosts` and `../ansible/playbook.yml` file with a basic configuration for the droplet.
 
 **Properly read and configure your variables files. Samples are provided in `./core-cloud/cloud.tfvars.sample` & `./core-cloud/.env.sample`**
 
