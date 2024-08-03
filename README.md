@@ -19,6 +19,7 @@ This folder provides IaC (Infra-as-Code) to
 4. <span style="color:green">(optional)</span> Bootstrap's the droplet with `tailscale` for private VPN.
 5. <span style="color:green">(optional)</span> Bootstrap's the droplet with a provided bash script, example in `./droplet-bootstrap.sh`.
 6. <span style="color:green">(optional)</span> Bootstrap's your local `~/.bashrc` with an alias to ssh to the droplet as root using the auto-generated SSH key in `1`.
+7. Setup the `../ansible/hosts` and `../ansible/playbook.yml` file with a basic configuration for the droplet.
 
 **Properly read and configure your variables files. Samples are provided in `./core-cloud/cloud.tfvars.sample` & `./core-cloud/.env.sample`**
 
@@ -30,18 +31,29 @@ This folder provides IaC (Infra-as-Code) to
 * [Tailscale](https://tailscale.com/) - Virtual Private LAN
 * [Digital Ocean Account](https://m.do.co/c/05f6cbbc106b) - Cloud Servers
 * [Cloudflare](https://www.cloudflare.com/) - Managed DNS record
+> ⚠️ **Warning:** A domain registered to Cloudflare is needed.
 
 ### Installation / Usage:
 
 1. Create the following: Hashicorp account -> org -> project -> vault secrets app (example name: `primary-cluster`).
-2. Load the following secret `key`s with the appropriate values in the app from `1`: 
-   1. `cloudflare_token`    - https://developers.cloudflare.com/fundamentals/api/get-started/create-token/
-   2. `cloudflare_zone_id`  - https://developers.cloudflare.com/fundamentals/setup/find-account-and-zone-ids/
-   3. `digitalocean_token`  - https://docs.digitalocean.com/reference/api/create-personal-access-token/
-   4. `tailscale_api_key`   - https://tailscale.com/kb/1101/api
+   * you can optionally install the [HCP CLI](https://developer.hashicorp.com/hcp/tutorials/get-started-hcp-vault-secrets/hcp-vault-secrets-install-cli) to create the secrets. if you are in WSL you will need `xdg-utils` installed. Once hcp app is set, secrets can be created with:
+```
+echo -n "my super secret" | hcp vault-secrets secrets create secret_key --data-file=-
+```
+2. Load the following secret `key`s with the appropriate values in the app from step `1`: 
+   1. [`cloudflare_token`](https://developers.cloudflare.com/fundamentals/api/get-started/create-token/) use the `Edit zone DNS` template
+   2. [`cloudflare_zone_id`](https://developers.cloudflare.com/fundamentals/setup/find-account-and-zone-ids/) you will need a domain registered.
+   3. [`digitalocean_token`](https://docs.digitalocean.com/reference/api/create-personal-access-token/) use `droplet` and `ssh-key` scopes. `images` scope can be useful to determine which image to use.
+   4. [`tailscale_api_key`](https://tailscale.com/kb/1101/api)
 3. [Create a project level service principal](https://developer.hashicorp.com/hcp/docs/hcp/admin/iam/service-principals#project-level-service-principals-1) for the vault secrets app you created and load the values in a `.env` file as shown in `./core-cloud/.env.sample`. 
-4. Create a `private.tfvars` file following the template in `./core-cloud/cloud.tfvars.sample`.
-
+   - use `secret-reader` role.
+   - Once created, click on the Name and Keys to generate the client ID and secret Key.
+4. Create a `private.tfvars` file the template in `./core-cloud/cloud.tfvars.sample`.
+   - if you want a specific droplet image you can get it using digital ocean cli. The following command gives you a list of available images:
+```
+doctl compute image list
+```
+5. create resources with terraform with the following commands:
 ```
 cd ./core-cloud
 terraform init
